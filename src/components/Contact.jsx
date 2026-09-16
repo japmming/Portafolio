@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { MessageSquare, Send } from "../icons";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquare, Send, Loader2 } from "../icons";
 import { socialIconMap } from "../icons";
 import { profileData } from "../data/data";
 import styles from "./Contact.module.css";
@@ -24,23 +24,56 @@ const fieldVariants = {
   }),
 };
 
+const formId = process.env.REACT_APP_FORMSPREE_ID;
+const hasForm = Boolean(formId);
+const FORM_ENDPOINT = hasForm ? `https://formspree.io/f/${formId}` : null;
+
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle");
   const timeoutRef = useRef(null);
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
 
-  const handleSubmit = (e) => {
+  const resetStatus = () => {
+    timeoutRef.current = setTimeout(() => setStatus("idle"), 3500);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(String(data.get("asunto") || "Contacto desde tu portfolio"));
-    const body = encodeURIComponent(
-      `Nombre: ${data.get("nombre") || ""}\nEmail: ${data.get("email") || ""}\n\n${data.get("mensaje") || ""}`
-    );
-    window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
-    setSent(true);
-    e.currentTarget.reset();
-    timeoutRef.current = setTimeout(() => setSent(false), 3000);
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (hasForm) {
+      setStatus("sending");
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          setStatus("sent");
+          form.reset();
+        } else {
+          setStatus("error");
+        }
+      } catch {
+        setStatus("error");
+      }
+    } else {
+      const subject = encodeURIComponent(String(data.asunto || "Contacto desde tu portfolio"));
+      const body = encodeURIComponent(
+        `Nombre: ${data.nombre || ""}\nEmail: ${data.email || ""}\n\n${data.mensaje || ""}`
+      );
+      window.location.href = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
+      setStatus("sent");
+      form.reset();
+    }
+
+    resetStatus();
   };
 
   return (
@@ -61,6 +94,15 @@ export default function Contact() {
       </p>
 
       <form className={styles.form} onSubmit={handleSubmit}>
+        <motion.input
+          type="text"
+          name="_gotcha"
+          className={styles.honeypot}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
+
         {fields.map((field, i) => (
           <motion.input
             key={field.name}
@@ -90,15 +132,53 @@ export default function Contact() {
           whileFocus={{ borderColor: "var(--accent)", scale: 1.01 }}
         />
 
+        <AnimatePresence>
+          {status === "error" && (
+            <motion.p
+              className={styles.errorMsg}
+              role="alert"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+            >
+              Ups, no se pudo enviar. Inténtalo de nuevo o contáctame en {profileData.email}.
+            </motion.p>
+          )}
+        </AnimatePresence>
+
         <motion.button
           type="submit"
-          className={`${styles.sendBtn} ${sent ? styles.sent : ""}`}
-          whileHover={!sent ? { scale: 1.03 } : {}}
-          whileTap={!sent ? { scale: 0.97 } : {}}
-          animate={sent ? { backgroundColor: "#22c55e" } : {}}
+          className={`${styles.sendBtn} ${status === "sent" ? styles.sent : ""} ${
+            status === "error" ? styles.errorBtn : ""
+          }`}
+          disabled={status === "sending"}
+          whileHover={status === "idle" ? { scale: 1.03 } : {}}
+          whileTap={status === "idle" ? { scale: 0.97 } : {}}
+          animate={
+            status === "sent"
+              ? { backgroundColor: "#22c55e" }
+              : status === "error"
+              ? { backgroundColor: "#ef4444" }
+              : {}
+          }
+          aria-live="polite"
         >
-          <Send size={16} strokeWidth={2} aria-hidden="true" />
-          {sent ? "¡Enviado!" : "Enviar mensaje"}
+          {status === "sending" ? (
+            <>
+              <Loader2 size={16} strokeWidth={2} className={styles.spin} aria-hidden="true" />
+              Enviando…
+            </>
+          ) : status === "sent" ? (
+            <>
+              <Send size={16} strokeWidth={2} aria-hidden="true" />
+              ¡Enviado!
+            </>
+          ) : (
+            <>
+              <Send size={16} strokeWidth={2} aria-hidden="true" />
+              Enviar mensaje
+            </>
+          )}
         </motion.button>
       </form>
 

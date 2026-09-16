@@ -27,6 +27,7 @@ export {
   Moon,
   Sun,
   ArrowLeft,
+  Loader2,
 } from "lucide-react";
 
 //  Icono extra para el Blog (también se usa en el mapa de proyectos)

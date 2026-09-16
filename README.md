@@ -1,196 +1,140 @@
-# 🧑‍💻 Portfolio Instagram — React + Framer Motion
+# 🧑‍💻 Portfolio Instagram
 
-Portafolio personal con estética de Instagram, construido con React y animaciones fluidas con Framer Motion.
+Portafolio personal con estética de Instagram, construido con **React 18**, **Framer Motion** y **CSS Modules**. Totalmente responsive: replica el layout del perfil de Instagram en desktop y móvil, con feed de proyectos, timeline de experiencia, blog y formulario de contacto.
 
 ---
+
+## ✨ Características
+
+- **Perfil estilo Instagram** con avatar, stats y bio alineadas en todos los dispositivos
+- **Feed de proyectos** en grid de 3 columnas con modal de detalle (carga perezosa)
+- **Timeline de experiencia** animada
+- **Blog** en la tercera pestaña del feed, con lista y vista de lectura
+- **Formulario de contacto** que envía a **Formspree** (con estados enviando/enviado/error, anti-spam honeypot y *fallback* a `mailto:` si no hay ID configurado)
+- **Modo oscuro** con toggle en la navbar (persistencia + preferencia del sistema)
+- **Animaciones fluidas** con Framer Motion en toda la interfaz
+- **Responsive** en 6 breakpoints (`900px / 768px / 735px / 640px / 480px / 400px`)
+- **SEO**: meta description, Open Graph, JSON-LD y favicon propio
+- **Tests** con Jest (datos + render)
+
+## 🛠 Stack
+
+| | |
+|---|---|
+| Framework | React 18 (Create React App 5) |
+| Animaciones | Framer Motion |
+| Iconos | lucide-react · react-icons (imports explícitos con tree-shaking) |
+| Estilos | CSS Modules + variables de tema |
+| Contacto | Formspree (fetch POST) con fallback a mailto |
+| Tipografía | DM Sans + DM Serif Display (Google Fonts) |
+| Tests | Jest (react-scripts) |
+
+## 🚀 Primeros pasos
+
+```bash
+npm install    # instala dependencias
+npm start      # servidor de desarrollo → http://localhost:3000
+npm test       # tests (Jest)
+npm run build  # build de producción en /build
+```
+
+### Formulario de contacto (Formspree)
+
+1. Crea una cuenta gratuita en [formspree.io](https://formspree.io) y crea un form.
+2. Copia tu ID (la parte de `f/` en la URL) y configúralo en un archivo `.env` (copia `.env.example`):
+
+   ```bash
+   REACT_APP_FORMSPREE_ID=mi_id_de_formspree
+   ```
+
+3. Reinicia `npm start` y listo.
+
+> Cuando tus clientes envíen el formulario, los mensajes llegan al **email que registraste en Formspree**.
+> Si **no** defines `REACT_APP_FORMSPREE_ID`, el formulario vuelve al modo `mailto:` (abre tu cliente de correo con el mensaje prellenado).
+
+### Requisitos
+
+- Node.js v18 o superior
+- npm (incluido con Node)
 
 ## 🗂 Estructura del proyecto
 
 ```
 portfolio/
 ├── public/
-│   └── index.html
+│   ├── index.html             # SEO + theme anti-flash
+│   ├── favicon.svg
+│   └── programmer-3d.webp     # avatar
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.jsx          # Barra de navegación sticky + toggle modo oscuro
-│   │   ├── Navbar.module.css
-│   │   ├── ProfileHeader.jsx   # Sección "bio" estilo Instagram
-│   │   ├── ProfileHeader.module.css
-│   │   ├── Avatar.jsx          # Avatar con fallback si la imagen no carga
-│   │   ├── Skills.jsx          # Highlights/Stories = tus habilidades
-│   │   ├── Skills.module.css
-│   │   ├── FeedGrid.jsx        # Grid de proyectos 3 columnas + modal
-│   │   ├── FeedGrid.module.css
-│   │   ├── Modal.jsx           # Modal de proyecto al hacer clic
-│   │   ├── Modal.module.css
-│   │   ├── Contact.jsx         # Formulario de contacto animado (mailto)
-│   │   └── Contact.module.css
+│   │   ├── Navbar.jsx         # sticky, toggle modo oscuro, sección activa
+│   │   ├── ProfileHeader.jsx  # header estilo Instagram (grid responsive)
+│   │   ├── Avatar.jsx         # avatar con fallback si la imagen no carga
+│   │   ├── Skills.jsx         # highlights/stories de habilidades
+│   │   ├── FeedGrid.jsx       # tabs: Proyectos · Experiencia · Blog
+│   │   ├── Modal.jsx          # detalle de proyecto (dialog accesible)
+│   │   ├── Experience.jsx     # timeline de experiencia
+│   │   ├── Blog.jsx           # listado + lectura de artículos
+│   │   └── Contact.jsx        # formulario mailto + redes sociales
 │   ├── data/
-│   │   └── data.js             # ⭐ AQUÍ editas tu info, proyectos y skills
-│   ├── App.jsx
-│   ├── index.js
-│   ├── index.css
-│   ├── icons.js                # Resolver de iconos (tree-shaking del bundle)
+│   │   └── data.js            # ⭐ TODO tu contenido editable
+│   ├── icons.js               # resolver de iconos (bundle optimizado)
+│   ├── index.css              # variables de tema claro/oscuro
 │   ├── setupTests.js
-│   └── __tests__/              # Tests de datos y render
+│   └── __tests__/             # tests de datos y render
 ├── package.json
+├── .env.example               # copia a .env con tu REACT_APP_FORMSPREE_ID
 └── README.md
 ```
 
----
+## ✏️ Personalizar tu contenido
 
-## 🚀 Instrucciones para crear el proyecto
-
-### 1. Requisitos previos
-
-Asegúrate de tener instalado:
-- **Node.js** (v18 o superior) → https://nodejs.org
-- **npm** (viene incluido con Node)
-
-Verifica con:
-```bash
-node -v
-npm -v
-```
-
----
-
-### 2. Crear el proyecto
-
-Tienes dos opciones:
-
-#### Opción A — Usar los archivos de este ZIP directamente
-1. Descomprime el ZIP en la carpeta que prefieras
-2. Abre una terminal en esa carpeta
-3. Ejecuta:
-```bash
-npm install
-```
-
-#### Opción B — Crear desde cero con Create React App
-```bash
-npx create-react-app portfolio
-cd portfolio
-npm install framer-motion
-```
-Luego reemplaza los archivos en `src/` con los de este proyecto.
-
----
-
-### 3. Iniciar el servidor de desarrollo
-
-```bash
-npm start
-```
-
-Esto abrirá automáticamente `http://localhost:3000` en tu navegador. 🎉
-
----
-
-### 4. Personalizar tu información
-
-Todo tu contenido está en **`src/data/data.js`**. Edita:
+Todo vive en **`src/data/data.js`**:
 
 ```js
-// Tu perfil
 export const profileData = {
-  username: "tu.nombre",        // @username
-  fullName: "Tu Nombre",        // nombre que aparece en negrita
-  title: "Desarrollador...",    // subtítulo
-  bio: ["línea 1", "línea 2"],  // texto de bio
-  tags: ["#React", "#Node"],    // hashtags
-  link: "tunombre.dev",         // enlace del perfil
-  email: "tu@email.com",        // destinatario del formulario de contacto (mailto)
-  socials: [  // redes sociales (deja href: "" para ocultar)
+  username: "joseperezm.dev",      // @username
+  fullName: "Jose Perez Marchena",
+  title: "Desarrollador Full Stack & Diseñador UI/UX",
+  bio: ["Transformo ideas en experiencias digitales", "..."],
+  tags: ["#React", "#Node", "#.NET", "#SQL"],
+  link: "joseperezm.dev",
+  email: "tu@email.com",           // fallback del formulario si no hay REACT_APP_FORMSPREE_ID
+  socials: [                        // deja href: "" para ocultar una red
     { icon: "FaGithub", label: "GitHub", href: "https://github.com/tunombre", color: "#24292e" },
+    { icon: "FaLinkedin", label: "LinkedIn", href: "", color: "#0077b5" },
   ],
-  avatar: "🧑‍💻",               // emoji de avatar (o cambia por img)
-  stats: { projects: 12, experience: 4, satisfaction: "98%" },
+  stats: { projects: 5, experience: 2, satisfaction: "98%" },
 };
 
-// Tus habilidades (aparecen como "Highlights")
-export const skills = [
-  { icon: "⚛️", label: "React" },
-  // ...agrega o quita las que quieras
-];
-
-// Tus proyectos (feed de 3 columnas)
-export const projects = [
-  {
-    emoji: "🛒",
-    gradient: "linear-gradient(135deg,#667eea,#764ba2)", // color de fondo
-    title: "Nombre del proyecto",
-    stack: "React · Node · MongoDB",
-    likes: 248,
-    comments: 14,
-    desc: "Descripción larga que aparece en el modal al hacer clic...",
-    tags: ["React", "Node.js", "MongoDB"],
-  },
-  // ...agrega todos los proyectos que quieras
-];
+// skills, projects, experience, blogPosts: edita, agrega o quita entradas
 ```
 
----
+- **`skills`**: iconos de `react-icons` (`si`/`fa`/`vsc`) con su color de marca.
+- **`projects`**: `lucideIcon` usa un nombre de icono Lucide; `githubUrl` vacío oculta el botón de GitHub.
+- **`blogPosts`**: artículos con `title`, `category`, `date`, `readTime`, `excerpt`, `content[]` y `tags`.
 
-### 5. Agregar tu foto de perfil (opcional)
+## 🌐 Deploy en Vercel (recomendado)
 
-En `src/components/ProfileHeader.jsx`, reemplaza el emoji por una imagen real:
+El proyecto es una SPA de React (desde **Create React App 5**), así que Vercel la detecta automáticamente: **build `npm run build` · output `build/`**.
 
-```jsx
-// Cambia esto:
-<div className={styles.avatarImg}>{avatar}</div>
+1. Creá una cuenta en [vercel.com](https://vercel.com).
+2. Entrá en **Add New → Project → importa tu repo de GitHub** (`japmming/Portafolio`).
+3. En **Environment Variables**, agregá tu ID de Formspree:
 
-// Por esto:
-<img
-  src="/foto.jpg"           // pon tu foto en la carpeta public/
-  alt="Mi foto"
-  className={styles.avatarImg}
-  style={{ objectFit: "cover" }}
-/>
-```
+   | Name | Value |
+   |---|---|
+   | `REACT_APP_FORMSPREE_ID` | tu form ID |
 
----
+4. **Deploy**. Vercel te da una URL `*.vercel.app` (y puedes conectar tu dominio propio).
 
-### 6. Build para producción
+**Actualización automática:** cada `git push` a `main` despliega producción solo (~1 min). Opcional: los Pull Requests generan *previews* con otra URL.
 
-Cuando estés listo para publicar:
+### Alternativas
 
-```bash
-npm run build
-```
-
-Genera la carpeta `build/` lista para subir a cualquier hosting:
-- **Netlify** → arrastra la carpeta `build/` a netlify.com
-- **Vercel** → `npx vercel` en la terminal
-- **GitHub Pages** → instala `gh-pages` y sigue su guía
+- **Netlify**: arrastra `build/` a netlify.com (Netlify Drop) o importa el repo; build `npm run build`, publish dir `build/`, misma variable de entorno que arriba.
+- **GitHub Pages**: instala `gh-pages` y publica `build/` (necesitas `homepage` en `package.json` para rutas relativas; el deploy es manual o con GitHub Action).
 
 ---
 
-## ✨ Animaciones incluidas
-
-| Componente | Animación |
-|---|---|
-| Navbar | Slide-down al cargar |
-| Avatar | Pulse + rotate al hover |
-| Estadísticas | Stagger fade-in |
-| Skills | Scale-in con bounce al aparecer en pantalla |
-| Feed Grid | Reveal por columna al hacer scroll |
-| Feed Hover | Overlay + emoji scale |
-| Modal | Spring scale al abrir, slide-out al cerrar |
-| Formulario | Campos entran desde la izquierda escalonados |
-| Botón enviar | Cambia a verde con animación al enviar |
-
----
-
-## 🛠 Tecnologías
-
-- **React 18** — UI components
-- **Framer Motion** — Animaciones declarativas
-- **CSS Modules** — Estilos encapsulados por componente
-- **Google Fonts** — DM Sans + DM Serif Display
-- **Modo oscuro** — toggle en la navbar, recuerda tu preferencia (localStorage/system)
-- **Jest** — `npm test` valida datos y render
-
----
-
-¡Listo! 🚀 Cualquier duda, edita `src/data/data.js` y el proyecto se actualiza en tiempo real.
+© 2026 Jose Perez Marchena · Hecho con ❤️ y mucho ☕
