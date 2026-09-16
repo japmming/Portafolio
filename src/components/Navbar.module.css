@@ -1,0 +1,96 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.linkActive {
+  color: var(--text);
+}
+
+.linkActive::after {
+  width: 100%;
+}
+
+.themeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
+}
+
+.themeBtn:hover {
+  color: var(--text);
+  background: var(--hover-bg);
+}
+
+@media (max-width: 768px) {
+  .links { gap: 18px; }
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 0 12px; }
+  .links { gap: 14px; }
+  .logo { font-size: 17px; }
+  .link { font-size: 0; gap: 0; }
+  .linkLabel { display: none; }
+}

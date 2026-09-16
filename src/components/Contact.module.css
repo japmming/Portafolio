@@ -1,0 +1,111 @@
+.section {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 64px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--white);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.textarea {
+  height: 120px;
+  resize: none;
+}
+
+.sendBtn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.sent { cursor: default; }
+
+.socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.socialPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.socialPill:hover {
+  border-color: var(--social-color, var(--accent));
+  color: var(--social-color, var(--accent));
+  background: var(--hover-bg);
+  background: color-mix(in srgb, var(--social-color, var(--accent)) 6%, transparent);
+}
+
+@media (max-width: 640px) {
+  .section { padding: 36px 0 48px; }
+  .title { font-size: 26px; }
+  .subtitle { font-size: 13px; margin-bottom: 24px; }
+}
+
+@media (max-width: 400px) {
+  .section { padding: 30px 0 40px; }
+  .socialPill { padding: 8px 14px; font-size: 12px; }
+}

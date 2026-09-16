@@ -1,0 +1,163 @@
+.wrapper {
+  position: relative;
+  padding: 28px 0 48px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Vertical timeline bar */
+.timeline {
+  position: absolute;
+  left: 16px;
+  top: 36px;
+  bottom: 36px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--border));
+  border-radius: 2px;
+}
+
+/* Dot on timeline */
+.dot {
+  position: absolute;
+  left: -43px;
+  top: 24px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2.5px solid white;
+  box-shadow: 0 0 0 2px var(--border);
+  z-index: 1;
+}
+
+.dotActive {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.dotPulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  z-index: -1;
+}
+
+/* Card */
+.card {
+  position: relative;
+}
+
+.cardInner {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: box-shadow 0.2s;
+}
+
+/* Card header */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.role {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.metaIcon {
+  font-size: 12px;
+}
+
+/* Description */
+.desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag {
+  padding: 4px 13px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+  cursor: default;
+  transition: background 0.2s;
+  background: var(--bg);
+}
+
+.tag:hover {
+  background: var(--tag-hover);
+}
+
+@media (max-width: 768px) {
+  .wrapper { padding-left: 46px; }
+  .dot { left: -34px; }
+  .cardHeader { flex-direction: column; gap: 8px; }
+  .meta { align-items: flex-start; }
+}
+
+@media (max-width: 540px) {
+  .wrapper {
+    padding-left: 40px;
+    padding-top: 20px;
+  }
+
+  .cardInner { padding: 16px 16px; }
+  .role { font-size: 15px; }
+  .desc { font-size: 13px; line-height: 1.6; }
+
+  .meta {
+    align-items: flex-start;
+  }
+
+  .dot {
+    left: -32px;
+  }
+}

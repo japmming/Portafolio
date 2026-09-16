@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fafafa" />
+    <meta
+      name="description"
+      content="Portafolio de Jose Perez Marchena, Desarrollador Full Stack y Diseñador UI/UX. Proyectos, experiencia y contacto."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="⭐ Full Stack Developer | Jose Perez Marchena" />
+    <meta
+      property="og:description"
+      content="Portafolio de Jose Perez Marchena, Desarrollador Full Stack y Diseñador UI/UX."
+    />
+    <meta property="og:image" content="/programmer-3d.webp" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>⭐Full Stack Developer | Jose Perez Marchena</title>
+    <script>
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem("theme"); } catch (e) {}
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved === "dark" || saved === "light"
+          ? saved
+          : (prefersDark ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "dark" ? "#0a0a0a" : "#fafafa");
+      })();
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jose Perez Marchena",
+        "jobTitle": "Desarrollador Full Stack & Diseñador UI/UX",
+        "url": "https://joseperezm.dev",
+        "sameAs": ["https://github.com/japmming"]
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>Necesitas habilitar JavaScript para ver esta aplicación.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
