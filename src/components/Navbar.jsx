@@ -64,7 +64,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <span className={styles.logo}>@{profileData.username}</span>
+      <span className={styles.logo}>@portafolio</span>
       <div className={styles.links}>
         {navLinks.map(({ label, href, Icon }) => (
           <motion.a

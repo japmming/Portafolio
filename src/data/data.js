@@ -3,7 +3,7 @@
 
 export const profileData = {
   username: "joseperezm.dev",
-  fullName: "Jose Perez Marchena",
+  fullName: "Jose Abel Perez Marchena",
   title: "Desarrollador Full Stack ",
   bio: [
     "Transformo ideas en experiencias digitales",
@@ -11,11 +11,11 @@ export const profileData = {
     "Disponible para proyectos remotos",
   ],
   tags: ["#React", "#Node", "#.NET", "#SQL"],
-  link: "joseperezm.dev",
+  link: "linkedin.com/in/joseperezmarchena/",
   email: "jose280726@gmail.com",
   socials: [
     { icon: "FaGithub",   label: "GitHub",   href: "https://github.com/japmming", color: "#24292e" },
-    { icon: "FaLinkedin", label: "LinkedIn", href: "",                             color: "#0077b5" },
+    { icon: "FaLinkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/joseperezmarchena/", color: "#0077b5" },
     { icon: "FaTwitter",  label: "Twitter",  href: "",                             color: "#1da1f2" },
     { icon: "FaBehance",  label: "Behance",  href: "",                             color: "#1769ff" },
   ],
