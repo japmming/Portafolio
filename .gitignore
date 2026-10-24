@@ -20,3 +20,5 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+# logs temporales
+*.log
