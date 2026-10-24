@@ -1,17 +1,19 @@
 import { useState, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "../data/data";
-import { getLucideIcon, Heart, MessageCircle, LayoutGrid, Briefcase, BookOpen } from "../icons";
+import { getLucideIcon, Heart, MessageCircle, LayoutGrid, Briefcase, BookOpen, Award } from "../icons";
 import Experience from "./Experience";
 import Blog from "./Blog";
 import styles from "./FeedGrid.module.css";
 
 const Modal = lazy(() => import("./Modal"));
+const Certifications = lazy(() => import("./Certifications"));
 
 const TABS = [
-  { label: "Proyectos",   Icon: LayoutGrid  },
-  { label: "Experiencia", Icon: Briefcase   },
-  { label: "Blog",        Icon: BookOpen    },
+  { label: "Proyectos",       Icon: LayoutGrid  },
+  { label: "Experiencia",     Icon: Briefcase   },
+  { label: "Blog",            Icon: BookOpen    },
+  { label: "Certificaciones", Icon: Award      },
 ];
 
 const tabVariants = {
@@ -64,6 +66,12 @@ export default function FeedGrid() {
           {activeTab === 1 && <Experience />}
 
           {activeTab === 2 && <Blog />}
+
+          {activeTab === 3 && (
+            <Suspense fallback={null}>
+              <Certifications />
+            </Suspense>
+          )}
         </motion.div>
       </AnimatePresence>
 

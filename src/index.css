@@ -88,13 +88,13 @@ button {
 }
 
 .main {
-  max-width: 935px;
+  max-width: 1225px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 26px;
 }
 
 @media (max-width: 640px) {
   .main {
-    padding: 0 14px;
+    padding: 0 18px;
   }
 }

@@ -29,6 +29,8 @@ export {
   ArrowLeft,
   Loader2,
   BookOpen,
+  Award,
+  BadgeCheck,
 } from "lucide-react";
 
 // ─────────────────────────────────────────────

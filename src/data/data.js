@@ -41,10 +41,6 @@ export const skills = [
   { iconLib: "si",  icon: "SiDocker",        label: "Docker",       color: "#2496ED" },
   { iconLib: "si",  icon: "SiPython",        label: "Python",       color: "#3776AB" },
   { iconLib: "vsc", icon: "VscAzureDevops",  label: "Azure DevOps", color: "#4169E1" },
-  //{ iconLib: "si", icon: "SiFigma",         label: "Figma",       color: "#F24E1E" },
-  //{ iconLib: "si", icon: "SiAmazon",        label: "AWS",         color: "#FF9900" },
-  
- 
 ];
 
 export const experience = [
@@ -66,8 +62,6 @@ export const experience = [
     tags: ["C#", "SQL", "Azure DevOps", ".NET"],
     current: false,
   },
-  
-  
 ];
 
 // Artículos del blog (pestaña "Blog" del feed)
@@ -92,7 +86,7 @@ export const blogPosts = [
     id: "pipeline-ci-cd-azure-devops",
     title: "Cómo montamos un pipeline CI/CD en Azure DevOps que sí aguanta",
     category: "DevOps",
-    date: "05 Jul 2026",
+    date: "05 Dic 2025",
     readTime: 5,
     excerpt:
       "Un pipeline no es un archivo YAML bonito: es un acuerdo con tu equipo sobre cómo se entrega el software sin fricciones.",
@@ -108,7 +102,7 @@ export const blogPosts = [
     id: "apis-rest-escalables",
     title: "APIs REST que sobreviven a 200 usuarios simultáneos",
     category: "Backend",
-    date: "18 Ago 2026",
+    date: "18 Nov 2025",
     readTime: 7,
     excerpt:
       "El rendimiento de una API se decide en el contrato y la consulta, no en el servidor donde la pones.",
@@ -161,7 +155,7 @@ export const blogPosts = [
     excerpt:
       "Un buen índice puede salvarte de un escaneo completo. Saber cuándo usarlo (y cuándo NO) marca la diferencia.",
     content: [
-      "Redujimos tiempos de consulta en un 25% con cambios sencillos. El primer paso siempre es mirar el plan de ejecución. Ahí te dice si está haciendo un Table Scan, Index Seek, o Key Lookup sin rodeos.",
+      "En NATCODEE redujimos tiempos de consulta en un 25% con cambios sencillos. El primer paso siempre es mirar el plan de ejecución. Ahí te dice si está haciendo un Table Scan, Index Seek, o Key Lookup sin rodeos.",
       "Los índices clustered vs non-clustered son fundamentales. Un clustered organiza la tabla físicamente, mientras que un non-clustered apunta a él. Crear demasiados índices non-clustered puede penalizar INSERT/UPDATE/DELETE, así que hay que equilibrar.",
       "Ojo con los índices compuestos: el orden de las columnas importa muchísimo. Si filtras por A y luego por B, el índice (A,B) funciona; (B,A) puede no aprovecharse. También conviene poner primero las columnas de filtro/equality y luego las de rango.",
       "Otros tips prácticos: evitar SELECT *, usar EXISTS en lugar de IN con subconsultas grandes cuando corresponda, revisar estadísticas desactualizadas (UPDATE STATISTICS) y tener cuidado con funciones sobre columnas en WHERE (rompen el uso del índice).",
@@ -206,8 +200,7 @@ export const blogPosts = [
 ];
 
 // lucideIcon: nombre del icono Lucide para el feed card
-// imgSrc (opcional): ruta de la captura en /public, ej. "/captura-proyecto.webp".
-// Si no existe, el feed y el modal muestran el degradado + icono como fallback.
+// imgSrc (opcional): ruta de la captura en /public
 export const projects = [
   {
     lucideIcon: "CalendarClock",
@@ -271,48 +264,98 @@ export const projects = [
     link: "https://frankchavezmarchena.vercel.app/",
     imgSrc: "/screenshot-portfolio-ing-geografica.webp",
   },
-  // {
-  //   lucideIcon: "Home",
-  //   gradient: "linear-gradient(135deg,#a18cd1,#fbc2eb)",
-  //   title: "Real Estate Platform",
-  //   stack: "Next.js · GraphQL · AWS",
-  //   likes: 276,
-  //   comments: 18,
-  //   desc: "Plataforma inmobiliaria con búsqueda geolocalizada, tour virtual 360°, calculadora de hipotecas y chat en tiempo real entre compradores y agentes.",
-  //   tags: ["Next.js", "GraphQL", "AWS S3", "Mapbox", "Socket.io"],
-  //   githubUrl : "https://github.com/japmming",
-  // },
-  // {
-  //   lucideIcon: "BookOpen",
-  //   gradient: "linear-gradient(135deg,#ffecd2,#fcb69f)",
-  //   title: "LMS Educativo",
-  //   stack: "Django · Vue.js · PostgreSQL",
-  //   likes: 143,
-  //   comments: 7,
-  //   desc: "Sistema de gestión de aprendizaje con cursos en video, quizzes interactivos, certificados digitales y foro de discusión. Más de 2,000 estudiantes activos.",
-  //   tags: ["Django", "Vue.js", "PostgreSQL", "Celery", "FFmpeg"],
-  //   githubUrl : "https://github.com/japmming",
-  // },
-  // {
-  //   lucideIcon: "Globe",
-  //   gradient: "linear-gradient(135deg,#89f7fe,#66a6ff)",
-  //   title: "SaaS Landing Page",
-  //   stack: "HTML · CSS · GSAP",
-  //   likes: 389,
-  //   comments: 27,
-  //   desc: "Landing page de alto impacto con animaciones fluidas, optimización de conversión A/B, video background y formulario de captura de leads. Velocidad 98/100 en PageSpeed.",
-  //   tags: ["HTML", "CSS", "GSAP", "Vanilla JS", "Webflow"],
-  //   githubUrl : "https://github.com/japmming",
-  // },
-  // {
-  //   lucideIcon: "Zap",
-  //   gradient: "linear-gradient(135deg,#fddb92,#d1fdff)",
-  //   title: "API RESTful",
-  //   stack: "Node · Express · Docker",
-  //   likes: 215,
-  //   comments: 11,
-  //   desc: "API robusta con autenticación OAuth2, rate limiting, caché con Redis, documentación Swagger y tests de integración automatizados. Dockerizada para Kubernetes.",
-  //   tags: ["Node.js", "Express", "Docker", "Redis", "Swagger"],
-  //   githubUrl : "https://github.com/japmming",
-  // },
+];
+
+// Certificaciones y cursos
+export const certifications = [
+  // Añade aquí tus certificados. Ejemplo:
+  {
+    id: "titulo-tecnico-ingenieria-software-ia",
+    title: "Ingeniería de Software con Inteligencia Artificial",
+    issuer: "SENATI",
+    date: "Dic 2025",
+    imgSrc: "/certifications/ing-software-con-ia-titulo.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "curso-desarrollo-web",
+    title: "Desarrollo Web",
+    issuer: "Coderhouse",
+    date: "Nov 2022",
+    imgSrc: "/certifications/desarrollo-web-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "curso-cloud-computing",
+    title: "Cloud Computing",
+    issuer: "Google",
+    date: "Jun 2023",
+    imgSrc: "/certifications/cloud-computing-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-data-engineering-big-data-analytics",
+    title: "Data Engineering y Big Data Analytics",
+    issuer: "Universidad Cesar Vallejo",
+    date: "Abr 2026",
+    imgSrc: "/certifications/bigdata-dataengineering-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-elements-of-ai",
+    title: "Elementos de IA",
+    issuer: "University of Helsinki",
+    date: "Mar 2023",
+    imgSrc: "/certifications/elements-of-ai-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-python-essentials",
+    title: "Programming Essentials in Python",
+    issuer: "Cisco Networking Academy",
+    date: "Nov 2020",
+    imgSrc: "/certifications/python-essentials-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-into-ciberseguridad",
+    title: "Introducción a la Seguridad Cibernética",
+    issuer: "Cisco Networking Academy",
+    date: "Ago 2020",
+    imgSrc: "/certifications/into-ciberseguridad-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-networking-essentials",
+    title: "Networking Essentials",
+    issuer: "Cisco Networking Academy",
+    date: "Dic 2020",
+    imgSrc: "/certifications/networking-essentials-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-into-iot",
+    title: "Introducción a Internet de las Cosas",
+    issuer: "Cisco Networking Academy",
+    date: "Ago 2020",
+    imgSrc: "/certifications/into-iot-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-get-connected",
+    title: "Get Connected",
+    issuer: "Cisco Networking Academy",
+    date: "Jul 2020",
+    imgSrc: "/certifications/get-connected-certificado.webp",
+    link: "https://...", // opcional
+  },
+  {
+    id: "certificado-entrepreneurship",
+    title: "Emprendimiento",
+    issuer: "Cisco Networking Academy",
+    date: "Ago 2020",
+    imgSrc: "/certifications/entrepreneurship-certificado.webp",
+    link: "https://...", // opcional
+  },
+  
 ];

@@ -154,20 +154,27 @@ export default function Modal({ project, onClose }) {
                 transition={{ delay: 0.1 }}
               >
                 <h2 className={styles.title}>{project.title}</h2>
-                <p className={styles.desc}>{project.desc}</p>
-                <div className={styles.tagRow}>
-                  {project.tags.map((t) => (
-                    <span key={t} className={styles.tag}>#{t}</span>
-                  ))}
-                </div>
+                {(project.desc || project.issuer) && (
+                  <p className={styles.desc}>
+                    {project.desc || [project.issuer, project.date].filter(Boolean).join(" | ")}
+                  </p>
+                )}
+                {Array.isArray(project.tags) && project.tags.length > 0 && (
+                  <div className={styles.tagRow}>
+                    {project.tags.map((t) => (
+                      <span key={t} className={styles.tag}>#{t}</span>
+                    ))}
+                  </div>
+                )}
               </motion.div>
 
-              <div className={styles.actions}>
-                {[
-                  { Icon: Heart,         label: project.likes,    fill: true,  link: false },
-                  { Icon: MessageCircle, label: project.comments, fill: false, link: false },
-                  { Icon: Send,          label: null,             fill: false, link: true },
-                ].map(({ Icon, label, fill, link }, i) => {
+              {project.likes != null && (
+                <div className={styles.actions}>
+                  {[
+                    { Icon: Heart,         label: project.likes,    fill: true,  link: false },
+                    { Icon: MessageCircle, label: project.comments, fill: false, link: false },
+                    { Icon: Send,          label: null,             fill: false, link: !!project.link },
+                  ].map(({ Icon, label, fill, link }, i) => {
                   const Action = link ? motion.a : motion.button;
                   const actionProps = link
                     ? {
@@ -219,6 +226,7 @@ export default function Modal({ project, onClose }) {
                   </a>
                 )}
               </div>
+              )}
             </div>
           </div>
         </motion.div>
