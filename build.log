@@ -1,0 +1,27 @@
+﻿
+> portfolio-instagram@1.0.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  113.58 kB (+5.05 kB)  build\static\js\main.555529a9.js
+  4.8 kB                build\static\css\main.5e3b20f4.css
+  2.15 kB               build\static\js\963.62dc2e29.chunk.js
+  1.51 kB               build\static\css\963.b1f4fc42.chunk.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+

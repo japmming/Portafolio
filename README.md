@@ -64,7 +64,7 @@ portfolio/
 ├── public/
 │   ├── index.html             # SEO + theme anti-flash
 │   ├── favicon.svg
-│   └── programmer-3d.webp     # avatar
+│   └── perfil-portfolio.webp     # avatar
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.jsx         # sticky, toggle modo oscuro, sección activa

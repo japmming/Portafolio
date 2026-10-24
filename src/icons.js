@@ -28,10 +28,8 @@ export {
   Sun,
   ArrowLeft,
   Loader2,
+  BookOpen,
 } from "lucide-react";
-
-//  Icono extra para el Blog (también se usa en el mapa de proyectos)
-export { BookOpen } from "lucide-react";
 
 // ─────────────────────────────────────────────
 //  Iconos de proyecto (data.js usa nombres string)
@@ -80,6 +78,11 @@ import {
   SiPostman,
   SiBootstrap,
   SiDotnet,
+  SiTailwindcss ,
+  SiTypescript ,
+  SiDocker ,
+  SiFigma ,
+  SiGit ,
 } from "react-icons/si";
 
 import {
@@ -93,7 +96,7 @@ import {
 import { VscAzureDevops } from "react-icons/vsc";
 
 const brandIconMap = {
-  si: { SiReact, SiNodedotjs, SiPython, SiJavascript, SiPostgresql, SiPostman, SiBootstrap, SiDotnet },
+  si: { SiReact, SiNodedotjs, SiPython, SiJavascript, SiPostgresql, SiPostman, SiBootstrap, SiDotnet, SiTailwindcss, SiTypescript, SiDocker, SiFigma, SiGit },
   fa: { FaJava },
   vsc: { VscAzureDevops },
 };

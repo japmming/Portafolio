@@ -44,7 +44,7 @@ export default function ProfileHeader() {
         >
           <div className={styles.avatarInner}>
             <Avatar
-              src="/programmer-3d.webp"
+              src="/perfil-portfolio.webp"
               className={styles.avatarImg}
               emojiClassName={styles.avatarEmoji}
             />
@@ -71,7 +71,7 @@ export default function ProfileHeader() {
               Contrátame
             </motion.button>
           </a>
-          <a href="/CV__JOSE%20ABEL%20PEREZ%20MARCHENA_2026.pdf" download>
+          <a href="/CV_JoseAbelPerezMarchena_.pdf" download>
             <motion.button
               className={styles.btnSecondary}
               whileHover={{ scale: 1.04 }}

@@ -80,6 +80,8 @@ export default function FeedGrid() {
 
 function FeedItem({ project, index, onClick }) {
   const LucideIcon = getLucideIcon(project.lucideIcon);
+  const [imgFailed, setImgFailed] = useState(false);
+  const showImage = Boolean(project.imgSrc) && !imgFailed;
 
   return (
     <motion.div
@@ -92,13 +94,27 @@ function FeedItem({ project, index, onClick }) {
       onClick={onClick}
     >
       <div className={styles.bg} style={{ background: project.gradient }}>
-        <motion.div
-          className={styles.iconWrap}
-          variants={{ hover: { scale: 1.18, rotate: -6 } }}
-          transition={{ duration: 0.3, type: "spring", stiffness: 260 }}
-        >
-          <LucideIcon size={52} strokeWidth={1.4} color="rgba(255,255,255,0.92)" />
-        </motion.div>
+        {showImage ? (
+          <motion.img
+            src={project.imgSrc}
+            alt=""
+            className={styles.thumb}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            onError={() => setImgFailed(true)}
+            variants={{ hover: { scale: 1.06 } }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          />
+        ) : (
+          <motion.div
+            className={styles.iconWrap}
+            variants={{ hover: { scale: 1.18, rotate: -6 } }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 260 }}
+          >
+            <LucideIcon size={52} strokeWidth={1.4} color="rgba(255,255,255,0.92)" />
+          </motion.div>
+        )}
       </div>
 
       <motion.div

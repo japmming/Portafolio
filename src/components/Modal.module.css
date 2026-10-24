@@ -13,26 +13,102 @@
   background: var(--white);
   border-radius: 14px;
   overflow: hidden;
-  max-width: 880px;
   width: 100%;
+  max-width: 1080px;
+  max-height: 90vh;
   display: flex;
-  max-height: 92vh;
   box-shadow: 0 24px 64px rgba(0,0,0,0.35);
 }
 
+/* Media: define el alto del modal a partir del aspecto real de la imagen */
 .imgSide {
-  width: 56%;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: var(--media-ratio, 1.91);
+  max-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  min-height: 400px;
+  overflow: hidden;
 }
 
+.imgSideMedia {
+  background: #000;
+}
+
+.imgSideFallback {
+  --media-ratio: 4 / 3;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.imgFrame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.projectImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  user-select: none;
+}
+
+.projectImgLoaded {
+  opacity: 1;
+}
+
+.imgSkeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.05) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+.iconFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+}
+
+/* Info: panel de ancho fijo con scroll interno, como Instagram */
 .info {
-  flex: 1;
+  position: relative;
+  flex: 0 0 clamp(300px, 33%, 380px);
+  min-width: 0;
+  min-height: 0;
+  border-left: 1px solid var(--border);
+  background: var(--white);
+}
+
+.infoInner {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -89,7 +165,8 @@
 .closeBtn:hover { color: var(--text); background: var(--bg); }
 
 .content {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 20px 18px;
   overflow-y: auto;
 }
@@ -152,21 +229,55 @@
   color: var(--text);
 }
 
-@media (max-width: 768px) {
-  .imgSide { width: 50%; min-height: 320px; }
-}
+/* Móvil: imagen arriba, info debajo y el modal completo puede scrollear */
+@media (max-width: 767px) {
+  .overlay {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
 
-@media (max-width: 640px) {
-  .modal { flex-direction: column; max-height: 94vh; }
-  .imgSide { width: 100%; min-height: 200px; }
+  .modal {
+    flex-direction: column;
+    max-height: none;
+    margin: auto 0;
+  }
+
+  .imgSide {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: 55vh;
+  }
+
+  .imgSideFallback {
+    padding: 16px;
+  }
+
+  .info {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .infoInner {
+    position: static;
+    inset: auto;
+    overflow: visible;
+  }
+
+  .content {
+    padding: 16px 14px;
+    overflow-y: visible;
+  }
+
   .title { font-size: 19px; }
-  .content { padding: 16px 14px; }
   .desc { font-size: 13px; line-height: 1.65; }
   .actions { padding: 10px 10px; }
 }
 
 @media (max-width: 400px) {
-  .imgSide { min-height: 150px; }
   .modalHeader { padding: 12px 12px; }
   .actionBtn svg { width: 21px; height: 21px; }
 }
