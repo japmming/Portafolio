@@ -8,10 +8,15 @@
     "avatar head"
     "avatar stats"
     "avatar bio";
-  column-gap: 80px;
+  /*column-gap: 80px;*/
+  column-gap: 30px;
   row-gap: 18px;
   align-items: start;
   padding: 40px 0 30px;
+  /*max-width: 980px;*/
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* ── Avatar ─────────────────────────────── */
@@ -244,6 +249,7 @@
     row-gap: 16px;
     padding: 24px 0 22px;
     align-items: start;
+    max-width: 100%;
   }
 
   .avatarWrap { width: 88px; align-self: start; }
