@@ -97,7 +97,7 @@ export default function ProfileHeader() {
 
       {/* Bio */}
       <motion.div className={styles.bio} variants={itemVariants}>
-        <p className={styles.fullName}>{fullName} ✨</p>
+        <p className={styles.fullName}>{fullName} 🧃</p>
         <p className={styles.title}>{title}</p>
         {bio.map((line, i) => {
           const Icon = bioIcons[i];

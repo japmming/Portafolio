@@ -37,7 +37,7 @@ export const skills = [
   { iconLib: "si",  icon: "SiGit",           label: "Git",          color: "#f5511e" },
   { iconLib: "si",  icon: "SiPostman",       label: "Postman",      color: "#FF6F00" },
   { iconLib: "si",  icon: "SiTailwindcss",   label: "Tailwind CSS", color: "#00bcff" },
-  { iconLib: "si",  icon: "SiBootstrap",     label: "Bootstrap",    color: "#1a49b6" },
+  { iconLib: "si",  icon: "SiAngular",     label: "Angular",    color: "#d61a15" },
   { iconLib: "si",  icon: "SiDocker",        label: "Docker",       color: "#2496ED" },
   { iconLib: "si",  icon: "SiPython",        label: "Python",       color: "#3776AB" },
   { iconLib: "vsc", icon: "VscAzureDevops",  label: "Azure DevOps", color: "#4169E1" },
@@ -45,21 +45,21 @@ export const skills = [
 
 export const experience = [
   {
-    role: "Practicante Full-Stack Developer",
+    role: "Programador Junior Full-Stack Developer",
     company: "JAZANI Consultora Ambiental",
     period: "Abr 2026 – May 2026",
     location: "Remoto",
-    desc: "Diseñé microservicios en C# (.NET) para datos geoespaciales, mejorando la eficiencia un 10%. Desarrollé módulos en React para capas geográficas y documenté APIs con Swagger, asegurando la consistencia del desarrollo.",
+    desc: "Desarrollé el módulo de prospección minera para SIGEMIN en arquitectura de microservicios con .NET, EF Core y React. Implementé endpoints REST, filtros geoespaciales interactivos en ArcGIS y gestión de estado con TanStack Query y Zustand bajo arquitectura limpia y GitFlow.",
     tags: ["Microservices", "React", ".NET", "APIs", "Swagger"],
     current: false,
   },
   {
-    role: "Full-Stack Developer Junior",
+    role: "Programador Junior Full-Stack Developer",
     company: "NATCODEE SAC",
     period: "Feb 2023 – Dic 2025",
     location: "Remoto",
-    desc: "Soporté ERPs/CRMs críticos en .NET y AngularJS. Optimicé SQL Server reduciendo tiempos un 25%, integré APIs de Meta/TikTok, rediseñé la UI con Bootstrap (+20% de usabilidad) y gestioné el ciclo con Azure DevOps y Scrum.",
-    tags: ["C#", "SQL", "Azure DevOps", ".NET"],
+    desc: "Realice el soporte, mantenimiento y desarrollo de módulos core, APIs REST e integraciones externas en .NET para los ERPs GS1 Perú, MovilBus y CRM Inlog. Optimicé SQL Server con T-SQL reduciendo los tiempos de consulta, creé dashboards con Chart.js y mejoré 20% la eficiencia de UI/UX del sistema de preguntas y encuestas de Expogestión GS1 Perú, y gestioné el ciclo de desarrollo con Azure DevOps y Scrum.",
+    tags: ["C#", "MVC", "SQL", "Azure DevOps", ".NET"],
     current: false,
   },
 ];

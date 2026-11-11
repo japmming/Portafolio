@@ -85,6 +85,7 @@ import {
   SiDocker ,
   SiFigma ,
   SiGit ,
+  SiAngular ,
 } from "react-icons/si";
 
 import {
@@ -98,7 +99,7 @@ import {
 import { VscAzureDevops } from "react-icons/vsc";
 
 const brandIconMap = {
-  si: { SiReact, SiNodedotjs, SiPython, SiJavascript, SiPostgresql, SiPostman, SiBootstrap, SiDotnet, SiTailwindcss, SiTypescript, SiDocker, SiFigma, SiGit },
+  si: { SiReact, SiNodedotjs, SiPython, SiJavascript, SiPostgresql, SiPostman, SiBootstrap, SiDotnet, SiTailwindcss, SiTypescript, SiDocker, SiFigma, SiGit, SiAngular },
   fa: { FaJava },
   vsc: { VscAzureDevops },
 };
