@@ -37,13 +37,22 @@ export const skills = [
   { iconLib: "si",  icon: "SiGit",           label: "Git",          color: "#f5511e" },
   { iconLib: "si",  icon: "SiPostman",       label: "Postman",      color: "#FF6F00" },
   { iconLib: "si",  icon: "SiTailwindcss",   label: "Tailwind CSS", color: "#00bcff" },
-  { iconLib: "si",  icon: "SiAngular",     label: "Angular",    color: "#d61a15" },
+  { iconLib: "si",  icon: "SiAngular",       label: "Angular",      color: "#d61a15" },
   { iconLib: "si",  icon: "SiDocker",        label: "Docker",       color: "#2496ED" },
-  { iconLib: "si",  icon: "SiPython",        label: "Python",       color: "#3776AB" },
   { iconLib: "vsc", icon: "VscAzureDevops",  label: "Azure DevOps", color: "#4169E1" },
+  { iconLib: "si",  icon: "SiPython",        label: "Python",       color: "#3776AB" },
 ];
 
 export const experience = [
+  {
+    role: "Asistente TI Junior",
+    company: "Inversiones Geodésicas S.A.C.",
+    period: "Jun 2026 – Oct 2026",
+    location: "Perú",
+    desc: "Brindé soporte técnico presencial y remoto, ejecutando mantenimiento preventivo/correctivo que redujo fallas en 25%. Gestioné inventarios de activos TI y licencias, y depuré bases de datos con Excel y SQL para reportes operativos.",
+    tags: ["AnyDesk", "Microsft 365", "Windows", "Excel", "SQL"],
+    current: false,
+  },
   {
     role: "Programador Junior Full-Stack Developer",
     company: "JAZANI Consultora Ambiental",
@@ -307,6 +316,14 @@ export const certifications = [
     issuer: "University of Helsinki",
     date: "Mar 2023",
     imgSrc: "/certifications/elements-of-ai-certificado.webp",
+    link: "https://...", // opcional
+  },
+   {
+    id: "certificado-computer-hardware-basics",
+    title: "Computer Hardware Basics",
+    issuer: "Cisco Networking Academy",
+    date: "Nov 2026",
+    imgSrc: "/certifications/computer-hardware-basics-certificado.webp",
     link: "https://...", // opcional
   },
   {

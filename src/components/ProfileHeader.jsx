@@ -71,7 +71,7 @@ export default function ProfileHeader() {
               Contrátame
             </motion.button>
           </a>
-          <a href="/CV_JoseAbelPerezMarchena_.pdf" download>
+          <a href="/CV_JoseAbelPerezMarchena_V1.pdf" download>
             <motion.button
               className={styles.btnSecondary}
               whileHover={{ scale: 1.04 }}
